@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require("body-parser")
-const app = express()
+const app = express();
 const port = 3001
+
+//emp is database name
 const url = "mongodb://localhost/emp"
 
 //Add url to mongoose connect 
@@ -19,15 +21,19 @@ con.on('open', () => {
   console.log("connected to Mongodb")
 })
 
-
+//root route with success message
 app.get('/', (req, res) => {
-  res.send('heyy there server activated successfully!!')
+  try {
+    res.send('heyy there server activated successfully!!')
+  } catch (err) {
+    res.statusMessage("something went wrong ....")
+  }
+
 })
 
 //attach "/employee" route to app
 const employes = require('./routes/employes')
-app.use("/employes",employes)
-
+app.use("/employes", employes)
 
 
 //running express app on port number 3001 

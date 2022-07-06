@@ -1,5 +1,7 @@
+//import mongoose
 const mongoose = require('mongoose')
 
+//create new schema using mongoose object
 const employeeschema = new mongoose.Schema({
     name :{
         type:String,
@@ -12,4 +14,5 @@ const employeeschema = new mongoose.Schema({
 
 } )
 
+// Don't forget to export mongoose model with schema
 module.exports = mongoose.model('employee',employeeschema);
